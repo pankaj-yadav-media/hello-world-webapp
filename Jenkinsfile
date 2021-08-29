@@ -12,7 +12,6 @@ pipeline {
 
     stage('Build') {
         steps{
-            sh "python -m install pip"
             sh "pip install -r requirements.txt"
             sh "gunicorn app:app"
         }
