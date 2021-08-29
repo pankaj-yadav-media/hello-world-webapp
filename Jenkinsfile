@@ -8,7 +8,6 @@ pipeline {
                 git changelog: false, poll: false, url: 'https://github.com/pankaj-yadav-media/hello-world-webapp'
             }
         }
-    }
 
 
     stage('Build') {
@@ -24,5 +23,6 @@ pipeline {
         steps{
             echo "Deploying"
         }
+    }
     }
 }
