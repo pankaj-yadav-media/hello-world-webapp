@@ -2,6 +2,11 @@ pipeline {
     agent any
 
 
+    tools {
+        dockerTool 'docker'
+    }
+
+
     stages {
         stage('Git Clone') {
             steps {
@@ -9,18 +14,14 @@ pipeline {
             }
         }
 
-
-    stage('Build') {
-        steps{
-            sh "pip3 install -r requirements.txt"
-            sh "gunicorn app:app"
-        }
-    }
-
-
     stage('Deploy'){
         steps{
-            echo "Deploying"
+            script {
+                def image = docker.build("pankajyadav404/training:latest")
+                image.push()
+            }
+
+            echo "Done."
         }
     }
     }
