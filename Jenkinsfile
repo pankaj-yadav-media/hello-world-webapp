@@ -17,7 +17,7 @@ pipeline {
     stage('Deploy'){
         steps{
             script {
-                def image = docker.build("pankajyadav404/training:latest")
+                // def image = docker.build("pankajyadav404/training:latest")
                 
                 // withDockerRegistry(credentialsId: 'docker-hub-credentials', toolName: 'docker') {
                 //     def image = docker.build("pankajyadav404/training:latest")
