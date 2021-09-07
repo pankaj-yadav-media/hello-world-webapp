@@ -4,6 +4,7 @@ pipeline {
 
     tools {
         dockerTool 'docker'
+        jdk 'jdk-11'
     }
 
 
