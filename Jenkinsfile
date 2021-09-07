@@ -14,27 +14,29 @@ pipeline {
             }
         }
 
-    stage('Deploy'){
-        steps{
-            // script {
-            //     // def image = docker.build("pankajyadav404/training:latest")
-                
-            //     // withDockerRegistry(credentialsId: 'docker-hub-credentials', toolName: 'docker') {
-            //     //     def image = docker.build("pankajyadav404/training:latest")
-            //     //     image.push()
-            //     // }
-                
-            // }
+        stage('Deploy'){
+            steps{
+                // script {
+                //     // def image = docker.build("pankajyadav404/training:latest")
+                    
+                //     // withDockerRegistry(credentialsId: 'docker-hub-credentials', toolName: 'docker') {
+                //     //     def image = docker.build("pankajyadav404/training:latest")
+                //     //     image.push()
+                //     // }
+                    
+                // }
 
-            echo "Done."
-        }
+                echo "Done."
+            }
     }
 
-    stage('SonarQube analysis') {
-        def scannerHome = tool 'sonar_scanner';
-            withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
-            sh "${scannerHome}/bin/sonar-scanner"
+        stage('SonarQube analysis') {
+            steps{
+                def scannerHome = tool 'sonar_scanner';
+                    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
         }
-    }
     }
 }
